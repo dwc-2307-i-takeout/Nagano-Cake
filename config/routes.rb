@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "public/homes#top"
+
 
   devise_for :customers, :controllers => {
   :sessions => 'customers/sessions',
@@ -14,31 +14,42 @@ Rails.application.routes.draw do
   :registrations => 'admins/registrations',
   }
 
+  root to: "homes#top"
+
   namespace :admin do
-    get "/admin" => "admin#top"
     resources :orders, only: [:show]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    resources :order_details, only: [:update]
+    resources :homes, only: [:top, :about]
   end
 
- namespace :public do
-    get "/about" => "homes#about"
-    get "orders/confirm" => "orders#confirm"
-    get "/orders/confirm" => "orders#confirm"
-    post "/orders/confirm" => "orders#confirm"
-    get "/customers/confirm" => "customers#confirm"
-    patch "/customers/withdrawal" => "customers#withdrawal"
-    resources :items, only:[:show, :index]
-    resources :cart_items, only:[:index, :create, :update, :destroy] do
-      collection do
-        delete "destroy_all"
-      end
-    end
-    resources :orders, only:[:new, :create, :index, :show]
-    resources :addresses, only:[:index, :create, :destroy, :show, :update, :edit]
-  end
 
+    get 'addresses/index'
+    get 'addresses/edit'
+
+
+    get 'orders/new'
+    get 'orders/index'
+    get 'orders/show'
+    get 'orders/complete'
+
+
+    get 'cart_items/index'
+
+
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/confirm'
+
+    get 'sessions/new'
+
+    get 'registrations/new'
+
+    get 'items/show'
+    get 'items/index'
+
+    get 'homes/top'
+    get 'homes/about'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
