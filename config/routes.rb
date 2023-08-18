@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
- devise_for :customers, :controllers => {
+  root "public/homes#top"
+
+  devise_for :customers, :controllers => {
   :sessions => 'customers/sessions',
   :passwords => 'customers/passwords',
   :registrations => 'customers/registrations',
@@ -12,47 +14,31 @@ Rails.application.routes.draw do
   :registrations => 'admins/registrations',
   }
 
-  root to: "homes#top"
-
   namespace :admin do
+    get "/admin" => "admin#top"
     resources :orders, only: [:show]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    resources :homes, only: [:top, :about]
+    resources :order_details, only: [:update]
   end
 
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
+ namespace :public do
+    get "/about" => "homes#about"
+    get "orders/confirm" => "orders#confirm"
+    get "/orders/confirm" => "orders#confirm"
+    post "/orders/confirm" => "orders#confirm"
+    get "/customers/confirm" => "customers#confirm"
+    patch "/customers/withdrawal" => "customers#withdrawal"
+    resources :items, only:[:show, :index]
+    resources :cart_items, only:[:index, :create, :update, :destroy] do
+      collection do
+        delete "destroy_all"
+      end
+    end
+    resources :orders, only:[:new, :create, :index, :show]
+    resources :addresses, only:[:index, :create, :destroy, :show, :update, :edit]
   end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
-    get 'orders/complete'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/confirm'
-  end
-  namespace :public do
-    get 'sessions/new'
-  end
-  namespace :public do
-    get 'registrations/new'
-  end
-  namespace :public do
-    get 'items/show'
-    get 'items/index'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
