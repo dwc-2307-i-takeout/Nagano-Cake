@@ -1,2 +1,75 @@
 <h1>Public::Registrations#new</h1>
 <p>Find me in app/views/public/registrations/new.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class="col">
+      <h2>Sign up</h2>
+    </div><!-- col -->
+  </div><!-- row -->
+  <div class='row'>
+    <div class="col-10">
+      <%= form_with model: @customer, url: new_customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
+        <form>
+          <div class="input-row">
+            <div class="input-label">フリガナ</div>
+            <label for="family_kana_name">(セイ)</label>
+            <input type="text" id="family_kana_name" name="family_kana_name">
+            <label for="first_kana_name">(メイ)</label>
+            <input type="text" id="first_kana_name" name="first_kana_name">
+          </div>
+
+          <br>
+
+          <div class="input-row">
+            <div class="input-label">メールアドレス</div>
+            <label for="email"></label>
+            <input type="email" id="email" name="email">
+          </div>
+
+          <br>
+
+          <div class="input-row">
+            <div class="input-label">郵便番号(ハイフンなし)</div>
+            <label for="post_number"></label>
+            <input type="text" id="post_number" name="post_number">
+          </div>
+
+          <br>
+
+          <div class="input-row">
+            <div class="input-label">住所</div>
+            <label for="address"></label>
+            <input type="text" id="address" name="address">
+          </div>
+
+          <br>
+
+          <div class="input-row">
+            <div class="input-label">電話番号(ハイフンなし)</div>
+            <label for="phone_number"></label>
+            <input type="text" id="phone_number" name="phone_number">
+          </div>
+
+          <br>
+
+          <div class="input-row">
+            <div class="input-label">パスワード(6文字以上)</div>
+            <label for="password"></label>
+            <input type="password" id="password" name="password">
+          </div>
+
+          <br>
+
+          <div class="input-row">
+            <div class="input-label">パスワード(確認用)</div>
+            <label for="confirm_password"></label>
+            <input type="password" id="confirm_password" name="confirm_password">
+          </div>
+
+          <button type="submit">新規登録</button>
+        </form>
+      <% end %>
+    </div><!-- col-10 -->
+    <div class="col-2"></div><!-- 空白カラム -->
+  </div><!-- row -->
+</div><!-- container -->
