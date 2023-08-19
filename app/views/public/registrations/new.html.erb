@@ -1,75 +1,75 @@
-<h1>Public::Registrations#new</h1>
-<p>Find me in app/views/public/registrations/new.html.erb</p>
 <div class='container'>
   <div class='row'>
-    <div class="col">
+    <div class='col-1'></div>
+    <div class="col-3 mt-2 mb-2">
       <h2>新規会員登録</h2>
-    </div><!-- col -->
+    </div><!-- col-3 -->
   </div><!-- row -->
+
   <div class='row'>
     <div class="col-10">
-      <%= form_with model: @customer, url: new_customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
+      <%= form_with model: @customer, url: new_customer_registration_path, local: true do |f| %>
         <form>
-          <div class="input-row">
-            <div class="input-label">フリガナ</div>
-            <label for="family_kana_name">(セイ)</label>
-            <input type="text" id="family_kana_name" name="family_kana_name">
-            <label for="first_kana_name">(メイ)</label>
-            <input type="text" id="first_kana_name" name="first_kana_name">
-          </div>
-
-          <br>
-
-          <div class="input-row">
-            <div class="input-label">メールアドレス</div>
-            <label for="email"></label>
-            <input type="email" id="email" name="email">
-          </div>
-
-          <br>
-
-          <div class="input-row">
-            <div class="input-label">郵便番号(ハイフンなし)</div>
-            <label for="post_number"></label>
-            <input type="text" id="post_number" name="post_number">
-          </div>
-
-          <br>
-
-          <div class="input-row">
-            <div class="input-label">住所</div>
-            <label for="address"></label>
-            <input type="text" id="address" name="address">
-          </div>
-
-          <br>
-
-          <div class="input-row">
-            <div class="input-label">電話番号(ハイフンなし)</div>
-            <label for="phone_number"></label>
-            <input type="text" id="phone_number" name="phone_number">
-          </div>
-
-          <br>
-
-          <div class="input-row">
-            <div class="input-label">パスワード(6文字以上)</div>
-            <label for="password"></label>
-            <input type="password" id="password" name="password">
-          </div>
-
-          <br>
-
-          <div class="input-row">
-            <div class="input-label">パスワード(確認用)</div>
-            <label for="confirm_password"></label>
-            <input type="password" id="confirm_password" name="confirm_password">
-          </div>
-
-          <button type="submit">新規登録</button>
-        </form>
-      <% end %>
+          <table>
+            <tr>
+              <td><%= f.label :name, "名前" %></td>
+              <td>(姓)<%= f.text_field :family_name, placeholder: "令和", class: "name-input" %></td>
+              <td>(名)<%= f.text_field :first_name, placeholder: "道子", class: "name-input" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :name, "フリガナ" %></td>
+              <td>(姓)<%= f.text_field :family_kana_name, placeholder: "レイワ", class: "name-input" %></td>
+              <td>(名)<%= f.text_field :first_kana_name, placeholder: "ミチコ", class: "name-input" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :email, "メールアドレス" %></td>
+              <td><%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><%= f.label :post_number, "郵便番号(ハイフンなし)" %></td>
+              <td><%= f.text_field :post_number, placeholder: "0000000" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><%= f.label :address, "住所" %></td>
+              <td colspan="2"><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", rows: 3 %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :phone_number, "電話番号(ハイフンなし)" %></td>
+              <td><%= f.text_field :phone_number, placeholder: "0000000", rows: 3 %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><%= f.label :password, "パスワード" %></td>
+              <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><%= f.label :password_confirmation, "パスワード確認" %></td>
+              <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><%= f.submit "新規登録", class: 'btn btn-sm btn-primary' %></td>
+              <td></td>
+            </tr>
+          </table>
+        <% end %>
+      </form>
     </div><!-- col-10 -->
     <div class="col-2"></div><!-- 空白カラム -->
+    <div class="row">
+      <p style="margin-left: 15px; background-color: rgba(128, 128, 128, 0.5);">
+        <%= "既に登録済みの方">
+      </p>
+      <div class="col">
+        <p style="margin-left: 20px;">
+         <%= link_to "こちら", new_customer_session_path %>からログインしてください
+        </p>
+      </div>
+    </div>
   </div><!-- row -->
 </div><!-- container -->
+
