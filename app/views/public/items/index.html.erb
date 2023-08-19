@@ -8,9 +8,20 @@
        キャンディ<br>
     </div>
     <div class="col-md-9" >
-      <h1 class="-title">
-          商品一覧
-      </h1>
+     商品一覧
+      <table>
+        <% @items.each do |item| %>
+        <tbody>
+          <th><%= item.name %>
+            <%= link_to public_item_path(item) do %>
+              <%= image_tag item.image %>
+            <% end %>
+            <%= item.price %>
+          <% end %>
+          </th>
+        </tbody>
+      </table>
+
       <strong> 全１億件 </strong>
 
      </div>
