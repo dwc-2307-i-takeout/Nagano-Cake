@@ -12,6 +12,7 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_item_path
     else
       flash[:item_created_error] = "商品情報が正常に保存されませんでした。"
+      render :new
     end
   end
 
@@ -22,6 +23,6 @@ class Admin::ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit( :item_image, :title, :body, :price, :faculty, :status)
+    params.require(:item).permit( :image, :name, :explanation, :price, :genres_id, :is_sale)
   end
 end
