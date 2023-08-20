@@ -2,74 +2,94 @@
   <div class='row'>
     <div class='col-1'></div>
     <div class="col-3 mt-2 mb-2">
-      <h2>新規会員登録</h2>
+      <h4 style="margin-top: 30px; background-color: rgba(128, 128, 128, 0.2); padding-left: 20px; padding-right: 20px; display: inline-block; ">
+        新規会員登録
+      </h4>
     </div><!-- col-3 -->
   </div><!-- row -->
 
   <div class='row'>
     <div class="col-10">
       <%= form_with model: @customer, url: new_customer_registration_path, local: true do |f| %>
+
         <form>
           <table>
             <tr>
               <td><%= f.label :name, "名前" %></td>
-              <td>(姓)<%= f.text_field :family_name, placeholder: "令和", class: "name-input" %></td>
-              <td>(名)<%= f.text_field :first_name, placeholder: "道子", class: "name-input" %></td>
+              <td style="width: 100px; text-align: right; padding-right: 16px;">(姓)</td>
+              <td><%= f.text_field :family_name, placeholder: "令和", class: "name-input" %></td>
+              <td style="width: 100px; text-align: right; padding-right: 16px;">(名)</td>
+              <td><%= f.text_field :first_name, placeholder: "道子", class: "name-input" %></td>
             </tr>
             <tr>
               <td><%= f.label :name, "フリガナ" %></td>
-              <td>(姓)<%= f.text_field :family_kana_name, placeholder: "レイワ", class: "name-input" %></td>
-              <td>(名)<%= f.text_field :first_kana_name, placeholder: "ミチコ", class: "name-input" %></td>
+              <td style="width: 100px; text-align: right;">(セイ)</td>
+              <td><%= f.text_field :family_kana_name, placeholder: "レイワ", class: "name-input" %></td>
+              <td style="width: 100px; text-align: right;">(メイ)</td>
+              <td><%= f.text_field :first_kana_name, placeholder: "ミチコ", class: "name-input" %></td>
             </tr>
             <tr>
               <td><%= f.label :email, "メールアドレス" %></td>
+              <td></td>
               <td><%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com" %></td>
               <td></td>
             </tr>
             <tr>
               <td><%= f.label :post_number, "郵便番号(ハイフンなし)" %></td>
+              <td></td>
               <td><%= f.text_field :post_number, placeholder: "0000000" %></td>
               <td></td>
             </tr>
             <tr>
               <td><%= f.label :address, "住所" %></td>
-              <td colspan="2"><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", rows: 3 %></td>
+              <td></td>
+              <td colspan="3"><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", style: "width: 100%;" %></td>
             </tr>
             <tr>
               <td><%= f.label :phone_number, "電話番号(ハイフンなし)" %></td>
-              <td><%= f.text_field :phone_number, placeholder: "0000000", rows: 3 %></td>
+              <td></td>
+              <td><%= f.text_field :phone_number, placeholder: "0000000000" %></td>
               <td></td>
             </tr>
             <tr>
               <td><%= f.label :password, "パスワード" %></td>
+              <td></td>
               <td><%= f.password_field :password, autocomplete: "new-password" %></td>
               <td></td>
             </tr>
             <tr>
               <td><%= f.label :password_confirmation, "パスワード確認" %></td>
+              <td></td>
               <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
               <td></td>
             </tr>
             <tr>
               <td></td>
-              <td><%= f.submit "新規登録", class: 'btn btn-sm btn-primary' %></td>
+              <td></td>
+              <td>
+                <div style="margin-top: 20px;">
+                 <%= f.submit "新規登録", class: 'btn btn-sm btn-success', style: 'width: 75%; font-size: 15px;' %>
+                </div>
+              </td>
               <td></td>
             </tr>
           </table>
         <% end %>
       </form>
     </div><!-- col-10 -->
-    <div class="col-2"></div><!-- 空白カラム -->
+    <div class="col-2"></div><!-- 空白 -->
+      </div><!-- row -->
+
     <div class="row">
-      <p style="margin-left: 15px; background-color: rgba(128, 128, 128, 0.5);">
-        <%= "既に登録済みの方">
-      </p>
-      <div class="col">
-        <p style="margin-left: 20px;">
-         <%= link_to "こちら", new_customer_session_path %>からログインしてください
-        </p>
+      <h4 style="margin-left: 50px; margin-top: 30px; background-color: rgba(128, 128, 128, 0.2); padding-left: 20px; padding-right: 20px; display: inline-block; ">
+        <%= "既に登録済みの方" %>
+      </h4>
       </div>
-    </div>
-  </div><!-- row -->
+      <div class="row">
+        <div style="margin-left: 100px; margin-top: 20px; ">
+         <%= link_to "こちら", new_customer_session_path %>　からログインしてください
+        </div>
+      </div>
+
 </div><!-- container -->
 
