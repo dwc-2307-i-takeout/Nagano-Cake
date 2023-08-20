@@ -1,4 +1,13 @@
 <h1>商品新規登録</h1>
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 
 <%= form_with model: @item, url: '/items', method: :post do |f| %>
 
@@ -12,16 +21,16 @@
   <%= f.text_area :explanation %>
 
   <h4>ジャンル</h4>
-  <%= f.select :genres_id, [["ケーキ", "ケーキ"], ["プリン", "プリン"], ["焼き菓子", "焼き菓子"], ["キャンディ", "キャンディ"]], include_blank: "--選択して下さい--" %>
+  <%= f.select :genre_id, [["ケーキ", "ケーキ"], ["プリン", "プリン"], ["焼き菓子", "焼き菓子"], ["キャンディ", "キャンディ"]], include_blank: "--選択して下さい--" %>
 
   <h4>税抜価格</h4>
   <%= f.number_field :price, placeholder: '1000' %>円
 
   <h4>販売ステータス</h4>
-  <%= f.radio_button :is_sale, true %>
+  <%= f.radio_button :is_sale, "販売可" %>
   <%= f.label :'販売中' %>
 
-  <%= f.radio_button :is_sale, false %>
+  <%= f.radio_button :is_sale, "販売不可" %>
   <%= f.label :'販売停止中' %>
 
   <%= f.submit '新規登録', class: "btn btn-primary" %>

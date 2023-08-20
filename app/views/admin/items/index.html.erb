@@ -1,4 +1,5 @@
-<h1>商品一覧</h1>
+
+      </tr><h1>商品一覧</h1>
 
 <div>
   <table class='table table-hover table-inverse'>
@@ -22,11 +23,9 @@
         <td><%= item.price %></tr>
         <td><%= item.genres.name %></tr>
         <td><%= item.sale_status%></tr>
-      </tr>
       <% end %>
     </tbody>
   </table>
 </div>
 
       <%= paginate @items %>
-
