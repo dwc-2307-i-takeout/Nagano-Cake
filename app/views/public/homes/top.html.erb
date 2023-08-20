@@ -20,7 +20,7 @@
           <% @items.each do |item| %>
             <%= item.name %>
             <%= link_to public_item_path(item) do %>
-              <%= image_tag item.image %>
+              <%= image_tag item.item_image(300, 300) %>
             <% end %>
             <%= item.price %>
           <% end %>
