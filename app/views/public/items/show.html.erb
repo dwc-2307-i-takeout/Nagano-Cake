@@ -1,2 +1,34 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render "genre", genres: @genres %>
+    </div>
+
+    <div class="col-7">
+      <div class="row">
+        <div><%= image_tag @item.item_image(300, 300) %></div>
+
+        <div>
+          <h4 class="font-weight-bold"><%= @item.name %></h4>
+          <p><%= @item.explanation %></p>
+          <div class="row">
+            <h5 class="font-weight-bold">
+              <%= @item.tax_included.to_s(:delimited) %>
+            </h5>
+            <p>（税込）</p>
+          </div>
+
+          <div class="row">
+            <%= form_with model: @cart_new, url: public_cart_items_path, method: :post do |f| %>
+              <%= f.select :amount, *[1..10], min: 1, include_blank: "個数選択" %>
+              <% if @item.is_sale %>
+                <%= f.submit "カートに入れる", class:"btn btn-success" %>
+              <% else %>
+                <div class="btn btn-warning">売切れ</div>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
