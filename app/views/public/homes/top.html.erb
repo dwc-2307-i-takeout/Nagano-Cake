@@ -1,25 +1,34 @@
-
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-       ジャンル検索<br>
-       ケーキ<br>
-       焼き菓子<br>
-       プリン<br>
-       キャンディ<br>
+      ジャンル検索<br>
+      ケーキ<br>
+      焼き菓子<br>
+      プリン<br>
+      キャンディ<br>
     </div>
-
     <div class="col-md-9">
+      <div><%= image_tag 'cake2.jpeg' %></div>
 
-          welcome!!永野Cakeへ！<br>
-          このサイトは、ケーキ販売のECサイトになります。<br>
-          会員でない方も商品の閲覧はできますが、<br>
-          購入には会員登録が必要になります。<br>
+      welcome!!永野Cakeへ！<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。<br>
 
-    　新着商品<br>
+      新着商品
+        <div>
+          <% @items.each do |item| %>
+            <%= item.name %>
+            <%= link_to public_item_path(item) do %>
+              <%= image_tag item.image %>
+            <% end %>
+            <%= item.price %>
+          <% end %>
+        </div>
 
+      <div class="ml-auto">
+        <%= link_to "全ての商品を見る>", public_items_path, class:"d-flex justify-content-end" %>
+      </div>
     </div>
-  <div><%= link_to "全ての商品を見る>", public_items_path %>
-  </div>
   </div>
 </div>
