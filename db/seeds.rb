@@ -21,23 +21,34 @@
   )
 end
 
-#管理者のログインデータ（完成後、これだけ残す）
+#管理者のログインデータ
   Admin.create!(
     email: "admin@gmail.com",
     password: "admin1234",
     )
 
-#ジャンルのダミーデータ
-5.times do |n|
+#ジャンルデータ
   Genre.create!(
-    name: "洋菓子#{n + 1}"
-    )
-end
+    [
+      {
+        name: "ケーキ"
+      },
+      {
+        name: "プリン"
+      },
+      {
+        name: "焼き菓子"
+      },
+      {
+        name: "キャンディ"
+      }
+    ]
+  )
 
 #商品のダミーデータ
 9.times do |n|
   Item.create!(
-    genre_id: (n % 5) + 1,
+    genre_id: (n % 4) + 1,
     name: "世界で#{n + 1}番目に美味しいケーキ！",
     explanation: "世界で#{n + 1}番目に人気のケーキです。",
     price: 800,
