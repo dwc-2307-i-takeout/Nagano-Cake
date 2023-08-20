@@ -2,31 +2,30 @@
   <div class="row">
     <div class="col-md-3">
       ジャンル<br>
-       ケーキ<br>
-       焼き菓子<br>
-       プリン<br>
-       キャンディ<br>
+      ケーキ<br>
+      焼き菓子<br>
+      プリン<br>
+      キャンディ<br>
     </div>
-    <div class="col-md-9" >
-     商品一覧
+    <div class="col-md-9">
+      <H3>商品一覧 (全<%= @items.count %>件)</H3>
+
       <table>
         <% @items.each do |item| %>
         <tbody>
-          <th><%= item.name %>
-            <%= link_to public_item_path(item) do %>
-              <%= image_tag item.image %>
-            <% end %>
-            <%= item.price %>
-          <% end %>
-          </th>
+          <tr>
+            <th><%= item.name %></th>
+            <td>
+              <%= link_to public_item_path(item) do %>
+                <%= image_tag item.image %>
+              <% end %>
+            </td>
+            <td>￥<% item.price.to_s(:delimited) %></td>
+          </tr>
         </tbody>
+        <% end %>
       </table>
 
-      <strong> 全１億件 </strong>
-
-     </div>
     </div>
   </div>
 </div>
-
-
