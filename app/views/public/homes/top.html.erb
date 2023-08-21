@@ -1,33 +1,33 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      ジャンル検索<br>
-      ケーキ<br>
-      焼き菓子<br>
-      プリン<br>
-      キャンディ<br>
+      <% @genres.each do |genre| %>
+        <%= link_to genre.name, public_items_path(genre: genre.name) %>
+      <% end %>
     </div>
     <div class="col-md-9">
-      <div><%= image_tag 'cake2.jpeg' %></div>
+      <div>
+        <%= image_tag 'cake2.jpeg'  %>
+      </div>
 
-      welcome!!永野Cakeへ！<br>
+      <p>Welcome!! 永野Cakeへ！<br>
       このサイトは、ケーキ販売のECサイトになります。<br>
       会員でない方も商品の閲覧はできますが、<br>
-      購入には会員登録が必要になります。<br>
+      購入には会員登録が必要になります。</p>
 
-      新着商品
-        <div>
-          <% @items.each do |item| %>
-            <%= item.name %>
-            <%= link_to public_item_path(item) do %>
-              <%= image_tag item.item_image(300, 300) %>
-            <% end %>
-            <%= item.price %>
+      <h4>新着商品</h4>
+      <div>
+        <% @items.each do |item| %>
+          <p><%= item.name %></p>
+          <%= link_to public_item_path(item) do %>
+            <%= image_tag item.image(300, 300) %>
           <% end %>
-        </div>
+          <p><%= item.price %></p>
+        <% end %>
+      </div>
 
       <div class="ml-auto">
-        <%= link_to "全ての商品を見る>", public_items_path, class:"d-flex justify-content-end" %>
+        <%= link_to "全ての商品を見る>", public_items_path, class: "d-flex justify-content-end" %>
       </div>
     </div>
   </div>
