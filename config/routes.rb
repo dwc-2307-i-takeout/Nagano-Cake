@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   root "public/homes#top"
   devise_for :customers, :controllers => {
-  :sessions => 'customers/sessions',
-  :passwords => 'customers/passwords',
-  :registrations => 'customers/registrations',
+  :sessions => 'public/sessions',
+  :passwords => 'public/passwords',
+  :registrations => 'public/registrations',
   }
-  devise_for :admins, :controllers => {
-  :sessions => 'admins/sessions',
-  :passwords => 'admins/passwords',
-  :registrations => 'admins/registrations',
+  devise_for :admin, :controllers => {
+  :sessions => 'admin/sessions',
+  :passwords => 'admin/passwords',
+  :registrations => 'admin/registrations',
   }
   namespace :admin do
     get "/admin" => "admin#top"
