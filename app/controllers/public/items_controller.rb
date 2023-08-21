@@ -3,6 +3,12 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
-    @items=Item.all
+    @genres = Genre.all
+    if params[:genre]
+      genre=Genre.find_by(name: params[:genre])
+      @items=genre.items
+    else
+      @items = Item.all
+    end
   end
 end

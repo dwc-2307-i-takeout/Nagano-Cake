@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 #会員のダミーデータ
 9.times do |n|
   Customer.create!(
@@ -54,3 +55,4 @@ end
     price: 800,
     )
 end
+
