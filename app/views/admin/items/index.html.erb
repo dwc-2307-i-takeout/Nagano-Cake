@@ -1,9 +1,17 @@
+<div class="container my-5">
+  <div class="row">
+      <h4>商品一覧</h4>
+  </div>
 
-      </tr><h1>商品一覧</h1>
+  <div class="text-right">
+    <%= link_to "＋", new_admin_item_path, class: 'btn btn-default' %>
+  </div>
 
-<div>
-  <table class='table table-hover table-inverse'>
+  <div>
+    <table class='table table-hover table-inverse'>
 
+  <div class="row mt-1">
+    <table class="table table-hover text-center">
     <thead>
       <tr>
         <th></th>
@@ -26,6 +34,7 @@
       <% end %>
     </tbody>
   </table>
+  </div>
+  </div>
 </div>
-
       <%= paginate @items %>
