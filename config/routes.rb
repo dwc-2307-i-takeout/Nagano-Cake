@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     patch "/customers/withdrawal" => "customers#withdrawal"
     get "/customers/mypage" => "customers#show"
     patch "/customers/mypage" => "customers#update"
+    get "/orders/complete" => "orders#complete"
     resources :items, only:[:show, :index]
     resources :cart_items, only:[:index, :create, :update, :destroy] do
       collection do
