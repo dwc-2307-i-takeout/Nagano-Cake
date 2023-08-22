@@ -19,7 +19,7 @@
   </div><!-- row -->
 
   <div class='row'>
-    <div class="col-4"></div>
+    <div class="col-3"></div>
     <div class="col-8">
 <%= form_with model: @customer, url: new_customer_session_path, local: true do |f| %>
   <!--%= render "devise/shared/error_messages", resource: resource %-->
@@ -35,16 +35,14 @@
           <%= f.label :email, "メールアドレス" %>
         </td>
         <td colspan="2">
-          <%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com", style: "width: 100%;" %>
-        </td>
+          <%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com", style: "width: 100%;" %></td>
       </tr>
       <tr>
         <td>
           <%= f.label :password, "パスワード" %>
         </td>
         <td colspan="2">
-          <%= f.password_field :password, autocomplete: "current-password", style: "width: 100%;" %>
-        </td>
+          <%= f.password_field :password, autocomplete: "current-password", style: "width: 100%;" %></td>
       </tr>
       <tr>
         <td></td>
