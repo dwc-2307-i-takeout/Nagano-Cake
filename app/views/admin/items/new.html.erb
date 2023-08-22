@@ -9,7 +9,7 @@
     </ul>
   <% end %>
 
-  <%= form_with model: @item, url: admin_item_path, method: :post, local: true do |f| %>
+  <%= form_with model: @item, url: new_admin_item_path, method: :post, local: true do |f| %>
     <div class="row mt-5">
       <div class="col-sm-4">
         <%= f.label :商品画像 %>

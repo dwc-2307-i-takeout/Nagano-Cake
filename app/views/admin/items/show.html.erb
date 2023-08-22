@@ -1,2 +1,44 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<h1>商品詳細</h1>
+
+<!--商品画像表示-->
+    <div class="row mt-5">
+      <div class="col-sm-4">
+<%= image_tag item.image, size: "200x200" %>
+      </div>
+
+
+    <tbody>
+
+      <tr>
+        <td>商品名</td>
+        <td><%= @item.name %></td>
+      </tr>
+
+      <tr>
+        <td>商品説明</td>
+        <td><%= @item.description %></td>
+      </tr>
+
+      <tr>
+        <td>ジャンル</td>
+        <td><%= @item.ggenres.name %></td>
+      </tr>
+
+      <tr>
+        <td>税込価格（税抜き価格）</td>
+        <td><%= @item.price %></td>
+      </tr>
+
+      <tr>
+        <td>販売ステータス</td>
+        <td><%= @item.sale_status %></td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-9 offset-sm-3">
+        <%= f.submit '編集する', class: "btn btn-primary" %>
+      </div>
+    </div>

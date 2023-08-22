@@ -26,11 +26,12 @@
     <tbody>
       <% @items.each do |item| %>
       <tr>
-        <td><%= item.id %></tr>
-        <td><%= link.to name, admin_item_path(item) %></tr>
-        <td><%= item.price %></tr>
-        <td><%= item.genres.name %></tr>
-        <td><%= item.sale_status%></tr>
+        <td><%= item.id %></td>
+        <td><%= link.to name, admin_item_path(item) %></td>
+        <td><%= item.price %></td>
+        <td><%= item.genres.name %></td>
+        <td><%= item.sale_status %></td>
+      </tr>
       <% end %>
     </tbody>
   </table>
