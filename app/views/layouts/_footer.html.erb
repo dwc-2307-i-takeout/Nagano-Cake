@@ -11,7 +11,7 @@
             <% end %>
           </li>
           <li class="mr-5">
-            <%= link_to destroy_admin_session_path, class: "nav-link btn btn-warning" do %>
+            <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link btn btn-warning" do %>
               管理者側ログアウト
             <% end %>
           </li>

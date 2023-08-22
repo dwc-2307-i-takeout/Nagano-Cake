@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   :passwords => 'public/passwords',
   :registrations => 'public/registrations',
   }
+<<<<<<< HEAD
   devise_for :admins, :controllers => {
+=======
+  devise_for :admin, :controllers => {
+>>>>>>> origin/develop
   :sessions => 'admin/sessions',
   :passwords => 'admin/passwords',
   :registrations => 'admin/registrations',
