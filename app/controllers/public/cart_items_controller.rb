@@ -15,14 +15,14 @@ class Public::CartItemsController < ApplicationController
       @cart_item = current_customer.cart_items.build(item_id: params[:cart_item][:item_id], quantity: params[:cart_item][:quantity])
     else
       #カートに中身がある場合
-      @cart_item.quantity = @cart_item.quantity + params[:cart_item][:quantity]
+      @cart_item.quantity += params[:cart_item][:quantity].to_i
     end
 
     if @cart_item.save
-      redirect_to public_cart_items_path, noteice: "商品が追加されました！"
+      redirect_to public_cart_items_path, notice: "商品が追加されました！"
     else
       @item = Item.find_by(id: params[:cart_item][:item_id])
-      redirect_to public_item_path(@item), notice: "商品の追加に失敗しました..."
+      redirect_to public_item_path(@item.id), notice: "商品の追加に失敗しました..."
     end
   end
 
@@ -31,7 +31,7 @@ class Public::CartItemsController < ApplicationController
     if @cart_item.destroy
       redirect_to request.referer, notice: "対象品を削除しました！"
     else
-      redirect_to request.referer, notice: "対象品の削除に失敗しました..."
+      render "index"
     end
   end
 

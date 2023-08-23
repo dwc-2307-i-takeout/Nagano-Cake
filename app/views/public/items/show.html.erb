@@ -18,11 +18,12 @@
             <p class="mt-1">（税込）</p>
           </div>
 
-          <div class="row mt-2">
-            <%= form_with model: @cart_new, url: public_cart_items_path, method: :post, class: 'ml-3' do |f| %>
-              <%= f.select :quantity, *[1..100], min: 1, include_blank: "個数選択", class: 'mr-md-3' %>
-              <% if @item.is_sale %>
-                <%= f.submit "カートに入れる", class: 'btn btn-success' %>
+          <div class="row mt-2 d-flex justify-content-evenly">
+            <%= form_with model: @cart_new, url: public_cart_items_path, method: :post, class: 'ml-md-3' do |f| %>
+              <%= f.hidden_field :item_id, value: @item.id %>
+              <%= f.select :quantity, *[1..99], min: 1, include_blank: "個数選択", class: 'mr-md-3' %>
+              <% if @item.is_sale == false %>
+                <%= f.submit "カートに入れる", class: 'btn btn-success mx-2 px-3 ml-5' %>
               <% else %>
                 <div class="btn btn-secondary mx-2 px-3 ml-5">売切れ</div>
               <% end %>
