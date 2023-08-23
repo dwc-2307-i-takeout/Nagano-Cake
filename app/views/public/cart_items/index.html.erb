@@ -2,7 +2,42 @@
     <%= render "layout/errors", obj: @cart_item %>
     <div class="row">
         <div>
-            <h4>ショッピングカート</h4>
+            <div>
+                <h4>ショッピングカート</h4>
+                <%= if @cart_items.exists? %>
+                    <p>
+                    　<%= link_to "カートを空にする",
+                                    destroy_all_public_cart_items_path,
+                                    method: :delete,
+                                    data: { confirm: "本当にカート内の全商品を削除しても宜しいですか？" },
+                                    class:"btn btn-danger" %>
+                </p>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>商品名</th>
+                        <th>単価（税込）</th>
+                        <th>数量</th>
+                        <th>小計</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <% @cart_items.each do |cart_item| %>
+                    <%= form_with model: ccart_item, url: public_cart_item_path(cart_item.id), method: :patch do |f| %>
+                        <tbody>
+                            <tr>
+                                <td>
+                                   <%= image_tag cart_item.item_image(100, 100) %>
+                                   <%= cart_item.item.name %>
+                                </td>
+                                <td><%= (cart_item.item.tax_included).to_s(:delimited) %></td>
+                                <td><%= f.select :quantity, *[1..10]%></td>
+                            </tr>
+                        </tbody>
+
+            </table>
         </div>
     </div>
 </div>
