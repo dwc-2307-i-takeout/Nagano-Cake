@@ -3,6 +3,14 @@ class Public::OrdersController < ApplicationController
    @order = Order.new
   end
 
+  def index
+    @orders = current_customer.orders.latest
+  end
+
+  def show
+    @order = current_customer.orders.find(params[:id])  
+  end
+  
   def create
     cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
@@ -44,6 +52,7 @@ class Public::OrdersController < ApplicationController
   else
     redirect_to root_path
   end
+
   @cart_items = current_customer.cart_items.all
   @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
 
