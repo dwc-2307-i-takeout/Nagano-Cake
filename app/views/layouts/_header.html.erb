@@ -1,34 +1,92 @@
 <header>
-  <nav class="nav navbar-nav navbar-expand-lg">
+  <nav class="nav navbar-nav navbar-expand-lg navbar-brand bg-light border-bottom">
     <div class="container-fluid">
-      <%= link_to image_tag("nagaNO.png", width: 100, height: 100), "/" %>
-        <!--顧客がログインしているとき-->
+      <!--顧客がログインしているとき-->
         <% if customer_signed_in? %>
-        <span>ようこそ、<%= current_customer.family_name %>さん！</span>
-        <div>
+        <div class="collapse navbar-collapse">
+        <%= link_to image_tag("nagaNO.png", width: 100, height: 100), "/" %>
+        <span class="ml-5">ようこそ、<%= current_customer.family_name %>さん！</span>
           <ul class="nav navbar-nav ml-auto">
             <li class="mr-5">
-              <%= link_to public_about_path, class: "nav-link btn btn-info" do %>
+              <%= link_to public_customers_mypage_path, class: "nav-link btn btn-outline-primary" do %>
                 マイページ
               <% end %>
             </li>
             <li class="mr-5">
-              <%= link_to public_items_path, class: "nav-link btn btn-warning" do %>
+              <%= link_to public_items_path, class: "nav-link btn btn-outline-warning" do %>
                 商品一覧
               <% end %>
             </li>
             <li class="mr-5">
-              <%= link_to new_customer_registration_path, class: "nav-link btn btn-primary" do %>
-                顧客側新規登録
+              <%= link_to public_cart_items_path, class: "nav-link btn btn-outline-success" do %>
+                カート
               <% end %>
             </li>
             <li class="mr-5">
-              <%= link_to customer_session_path, class: "nav-link btn btn-success" do %>
-                顧客側ログイン
+              <%= link_to destroy_customer_session_path(current_customer.id), method: :delete, class: "nav-link btn btn-outline-danger" do %>
+                ログアウト
               <% end %>
             </li>
           </ul>
         </div>
+        <!--管理者がログインしているとき-->
+        <% elsif admin_signed_in? %>
+        <div  class="collapse navbar-collapse">
+          <ul class="nav navbar-nav ml-auto">
+            <li class="mr-5">
+              <%= link_to public_items_path, class: "nav-link btn btn-outline-warning" do %>
+                商品一覧
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to admin_customers_path, class: "nav-link btn btn-outline-info" do %>
+                会員一覧
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to admin_admin_path, class: "nav-link btn btn-outline-success" do %>
+                注文履歴一覧
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to admin_genres_path, class: "nav-link btn btn-outline-secondary" do %>
+                ジャンル一覧
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to destroy_admin_session_path(current_admin.id), method: :delete, class: "nav-link btn btn-outline-danger" do %>
+                ログアウト
+              <% end %>
+            </li>
+          </ul>
+        </div>
+        <!--どちらもログインしていないとき-->
+        <% else %>
+        <div  class="collapse navbar-collapse">
+          <ul class="nav navbar-nav ml-auto">
+            <li class="mr-5">
+              <%= link_to public_about_path, class: "nav-link btn btn-outline-danger" do %>
+                About
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to public_items_path, class: "nav-link btn btn-outline-warning" do %>
+                商品一覧
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to new_customer_registration_path, class: "nav-link btn btn-outline-success" do %>
+                新規登録
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to new_customer_session_path, class: "nav-link btn btn-outline-info" do %>
+                ログイン
+              <% end %>
+            </li>
+          </ul>
+        </div>
+        <% end %>
     </div>
   </nav>
 </header>
