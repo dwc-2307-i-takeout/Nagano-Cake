@@ -3,7 +3,6 @@
   <h2 class="mb-4">会員登録情報</h2>
 
   <%= form_with model: @customer, url:  public_customers_mypage_path, method: :patch, local: true do |f| %>
-    <% render "public/shared/error_messages", resource: @customer %>
 
      <div class="row">
           <label class="col-lg-3">名前</label>
