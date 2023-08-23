@@ -7,7 +7,7 @@
     </div>
     <div class="col-md-9">
       <div>
-        <%= image_tag 'cake2.jpeg'  %>
+        <%= image_tag 'cake2.jpeg' %>
       </div>
 
       <p>Welcome!! 永野Cakeへ！<br>
@@ -22,7 +22,7 @@
           <%= link_to public_item_path(item) do %>
             <%= image_tag item.image(300, 300) %>
           <% end %>
-          <p><%= item.price %></p>
+          ￥<%= item.price.to_s(:delimited) %>
         <% end %>
       </div>
 
