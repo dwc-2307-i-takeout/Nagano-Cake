@@ -33,7 +33,10 @@
                                    <%= cart_item.item.name %>
                                 </td>
                                 <td><%= (cart_item.item.tax_included).to_s(:delimited) %></td>
-                                <td><%= f.select :quantity, *[1..10]%></td>
+                                <td><%= f.select :quantity, *[1..100]%>, selected: cart_item.quantity %>
+                                <% f.submit "変更", class: "btn btn-success"</td>
+                                <td><%= (cart_item.total_price).to_s(:delimited)</td>
+                                <td><%= link_to</td>
                             </tr>
                         </tbody>
 
