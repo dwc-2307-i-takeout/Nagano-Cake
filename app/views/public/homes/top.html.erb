@@ -20,7 +20,7 @@
         <% @items.each do |item| %>
           <p><%= item.name %></p>
           <%= link_to public_item_path(item) do %>
-            <%= image_tag item.image(300, 300) %>
+            <%= image_tag("cake2.jpeg", width: 300, height: 300) %>
           <% end %>
           ￥<%= item.price.to_s(:delimited) %>
         <% end %>
