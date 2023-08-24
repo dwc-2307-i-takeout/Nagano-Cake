@@ -1,20 +1,26 @@
 ja:
+  activerecord:
+    models:
+      order: 注文
+      order_detail: 注文詳細
+    attributes:
+      order:
+        payment_method: 支払い方法
+        status: ステータス
+      order_detail:
+        making_status: 製作状況
   enums:
-    order:
-      payment_method:
-        credit_card: "クレジットカード"
-        bank_transfer: "銀行振込"
-
-      status:
-        waiting_for_payment: "入金待ち"
-        payment_confirmation: "入金確認"
-        production: "製作中"
-        preparing_to_ship: "発送準備中"
-        sent: "発送済み"
-
-    order_detail:
-      making_status:
-        not_start: "着手不可"
-        waiting_for_production: "製作待ち"
-        production: "製作中"
-        complete_production: "製作完了"
+    order/payment_method:
+      credit_card: クレジットカード
+      bank_transfer: 銀行振込
+    order/status:
+      waiting_for_payment: 入金待ち
+      payment_confirmation: 入金確認
+      production: 製作中
+      preparing_to_ship: 発送準備中
+      sent: 発送済み
+    order_detail/making_status:
+      not_start: 着手不可
+      waiting_for_production: 製作待ち
+      production: 製作中
+      complete_production: 製作完了
