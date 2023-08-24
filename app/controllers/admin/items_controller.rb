@@ -10,7 +10,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to new_admin_item_path(@item.id)
+      redirect_to admin_items_path
     else
       flash[:item_created_error] = "商品情報が正常に保存されませんでした。"
       render :new
@@ -22,11 +22,12 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:image, :name, :explanation, :price, :genres_id, :is_sale)
+    params.require(:item).permit(:image, :name, :explanation, :price, :genre_id, :is_sale)
   end
 end

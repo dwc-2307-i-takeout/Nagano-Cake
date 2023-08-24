@@ -9,7 +9,7 @@
     </ul>
   <% end %>
 
-  <%= form_with model: @item, url: new_admin_item_path, method: :post, local: true do |f| %>
+  <%= form_with model: @item, url: admin_items_path, method: :post, local: true do |f| %>
     <div class="row mt-5">
       <div class="col-sm-4">
         <%= f.label :商品画像 %>
@@ -31,7 +31,11 @@
         <div class="form-group row">
           <%= f.label :ジャンル, class: "col-sm-3" %>
           <div class="col-sm-9">
-            <%= f.select :genre_id, [["ケーキ", "ケーキ"], ["プリン", "プリン"], ["焼き菓子", "焼き菓子"], ["キャンディ", "キャンディ"]], include_blank: "--選択して下さい--", class: "form-control" %>
+            <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: "--選択して下さい--", class: "form-control" %>
+            <option value ="1">ケーキ</option>
+            <option value ="2">プリン</option>
+            <option value ="3">焼き菓子</option>
+            <option value ="4">キャンディ</option>
           </div>
         </div>
         <div class="form-group row">
