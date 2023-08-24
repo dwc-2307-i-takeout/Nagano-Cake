@@ -10,9 +10,10 @@
   
   <tr>
     <td>配送先</td>
-    <td> <%= @order.post_number %><br>
-        <%= @order.address %><br>
-        <%= @order.name %>
+    <td>
+      <%= @order.post_number %><br>
+      <%= @order.address %><br>
+      <%= @order.name %>
     </td>
   </tr>
   
@@ -25,13 +26,10 @@
     <td>ステータス</td>
     <td><%= @order.status %></td>
   </tr>
-  <% end %>
-  
 </table>
 
 <h4>請求情報</h4>
 <table>
- 
   <tr>
     <td>商品合計</td>
     <td><%= @order.billing_amount - @order.postage %></td>
@@ -39,7 +37,7 @@
   
   <tr>
     <td>配送料</td>
-    <td> <%= @order.postage %></td>
+    <td><%= @order.postage %></td>
   </tr>
   
   <tr>
@@ -52,20 +50,19 @@
 
 <table>
   <thead>
-  <tr>
+    <tr>
       <th>商品</th>
       <th>単価（税込）</th>
       <th>個数</th>
       <th>小計</th>
-   </tr>
+    </tr>
   </thead>
-    <% @order.order_details.each do |order_detail| %>
-  <tr>
-    <td><%= order_detail.item.name %></td>
-    <td><%= order_detail.price %></td>
-    <td><%= order_detail.quantity %></td>
-    <td><%= order_detail.sub_total %></td>
-  </tr>
+  <% @order.order_details.each do |order_detail| %>
+    <tr>
+      <td><%= order_detail.item.name %></td>
+      <td><%= order_detail.price %></td>
+      <td><%= order_detail.quantity %></td>
+      <td><%= order_detail.sub_total %></td>
+    </tr>
   <% end %>
-  
 </table>
