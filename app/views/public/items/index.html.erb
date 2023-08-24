@@ -1,9 +1,7 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
     <div class="col-md-3">
-      <% @genres.each do |genre| %>
-        <%= link_to genre.name, public_items_path(genre: genre.name) %>
-      <% end %>
+      <%= render "genre", genres: @genres %>
     </div>
     <div class="col-md-9">
       <h3>商品一覧 (全<%= @items.count %>件)</h3>
