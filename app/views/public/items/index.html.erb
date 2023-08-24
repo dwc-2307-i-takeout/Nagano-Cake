@@ -1,28 +1,32 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
     <div class="col-md-3">
-      <% @genres.each do |genre| %>
-        <%= link_to genre.name, public_items_path(genre: genre.name) %>
-      <% end %>
+      <%= render "genre", genres: @genres %>
     </div>
     <div class="col-md-9">
-      <h3>商品一覧 (全<%= @items.count %>件)</h3>
-
-      <table>
-        <% @items.each do |item| %>
-          <tbody>
-            <tr>
-              <th><%= item.name %></th>
-              <td>
-                <%= link_to public_item_path(item) do %>
-                  <%= image_tag item.image %>
-                <% end %>
-              </td>
-              <td>￥<%= item.price.to_s(:delimited) %></td>
-            </tr>
-          </tbody>
-        <% end %>
-      </table>
+      <h3>商品一覧 (全<%= @items_count %>件)</h3>
+      <div>
+        <div class="d-flex flex-wrap">
+          <% @items.each do |item| %>
+            <div class="d-flex flex-column mr-4">
+              <%= link_to public_item_path(item.id) do %>
+                <%= image_tag item.item_image(150, 150) %>
+                <!--<div>
+                  アプリケーション完成後にコメントアウトを外す
+                  < if f.is_sale == false >
+                    <div class="text-center">売切れ</div>
+                  < end >
+                </div>-->
+                <p><%= item.name.truncate(14) %></p>
+                <p>￥<%= item.price.to_s(:delimited) %></p>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="d-flex justify-center text-center">
+          <%= paginate @items %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

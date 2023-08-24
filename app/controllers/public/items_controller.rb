@@ -1,4 +1,5 @@
 class Public::ItemsController < ApplicationController
+
   def show
     @item = Item.find(params[:id])
     @genres = Genre.all
@@ -7,11 +8,14 @@ class Public::ItemsController < ApplicationController
 
   def index
     @genres = Genre.all
-    if params[:genre]
-      genre=Genre.find_by(name: params[:genre])
-      @items=genre.items
+    if params[:genre_id]
+      @item_genre = Genre.find(params[:genre_id]).items
+      @items = @item_genre.page(params[:page])
+      @items_count = @item_genre.count
     else
-      @items = Item.all
+      @items = Item.page(params[:page])
+      @items_count = Item.count
     end
   end
+
 end
