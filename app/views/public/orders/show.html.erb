@@ -7,7 +7,7 @@
     <td>注文日</td>
     <td><%= @order.created_at %></td>
   </tr>
-  
+
   <tr>
     <td>配送先</td>
     <td>
@@ -16,12 +16,12 @@
       <%= @order.name %>
     </td>
   </tr>
-  
+
   <tr>
     <td>支払い方法</td>
     <td><%= @order.payment_method %></td>
   </tr>
-  
+
   <tr>
     <td>ステータス</td>
     <td><%= @order.status %></td>
@@ -34,12 +34,12 @@
     <td>商品合計</td>
     <td><%= @order.billing_amount - @order.postage %></td>
   </tr>
-  
+
   <tr>
     <td>配送料</td>
     <td><%= @order.postage %></td>
   </tr>
-  
+
   <tr>
     <td>ご請求金額</td>
     <td><%= @order.billing_amount %></td>

@@ -1,11 +1,44 @@
-<% @cart_items.each do |cart| %>
-  <%= cart.item.name %>
-  <%= (cart.item.price).to_s(:delimited) %>
-  <%= cart.quantity %>
-  <%= (cart.item.price*cart.quantity).to_s(:delimited) %>
-<% end %>
-<p>ご請求金額</p>
-<%= @total.to_s(:delimited) %> 
+<h4>注文情報確認</h4>
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <% @cart_items.each do |cart| %>
+
+  <tbody>
+    <tr>
+      <td><%= cart.item.name %></td>
+      <td><%= (cart.item.price).to_s(:delimited) %></td>
+      <td><%= cart.quantity %></td>
+      <td><%= (cart.item.price*cart.quantity).to_s(:delimited) %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+<table>
+  <tr>
+    <td>送料</td>
+    <td><%= @order.postage %></td>
+  </tr>
+ 
+  <tr>
+    <td>商品合計</td>
+    <td><%= @all_price %></td>
+  </tr>
+
+  <tr>
+    <td>請求金額</td>
+    <td><%= @order.billing_amount %></td>
+  </tr>
+
+</table>
+<%= @total.to_s(:delimited) %>
 <p>お届け先</p>
 <%= @order.address %>
 

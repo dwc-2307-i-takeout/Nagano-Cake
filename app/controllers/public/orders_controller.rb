@@ -34,11 +34,22 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+
     @order = Order.new(order_params)
+      @cart_items = current_customer.cart_items
+      @order.postage = 800
+      @all_price = 0
+       @cart_items.each do |cart_item|
+      @all_price += cart_item.total_price
+      end
+      
+      @order.billing_amount = @order.postage + @all_price
 
     if params[:order][:address_number] == "1"
-      @order.name = current_customer.name 
-      @order.address = current_customer.customer_address
+      @order.name = current_customer.family_name + current_customer.first_name
+      @order.address = current_customer.address
+      @order.post_number = current_customer.post_number
+
     elsif params[:order][:address_number] == "2"
       if Address.exists?(name: params[:order][:registered])
         @order.name = Address.find(params[:order][:registered]).name
@@ -57,7 +68,7 @@ class Public::OrdersController < ApplicationController
     end
 
     @cart_items = current_customer.cart_items.all
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
+    @total = @cart_items.inject(0) { |sum, item| sum + item.total_price }
   end
 
   private
