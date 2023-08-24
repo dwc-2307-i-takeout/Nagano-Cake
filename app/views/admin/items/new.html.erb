@@ -32,10 +32,6 @@
           <%= f.label :ジャンル, class: "col-sm-3" %>
           <div class="col-sm-9">
             <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: "--選択して下さい--", class: "form-control" %>
-            <option value ="1">ケーキ</option>
-            <option value ="2">プリン</option>
-            <option value ="3">焼き菓子</option>
-            <option value ="4">キャンディ</option>
           </div>
         </div>
         <div class="form-group row">
