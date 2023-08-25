@@ -12,6 +12,10 @@ class Public::ItemsController < ApplicationController
       @item_genre = Genre.find(params[:genre_id]).items
       @items = @item_genre.page(params[:page])
       @items_count = @item_genre.count
+    elsif params[:search]
+      @search_item = Item.search(params[:search])
+      @items = @search_item.page(params[:page])
+      @items_count = @items.count
     else
       @items = Item.page(params[:page])
       @items_count = Item.count
