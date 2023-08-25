@@ -1,14 +1,12 @@
 <h1>注文履歴一覧</h1>
 
-<table>
+<table class="table table-bordered border-dark">
   <thead>
     <tr>
-      <th>注文日</th>
-      <th>配送先</th>
-      <th>注文商品</th>
-      <th>支払い金額</th>
-      <th>ステータス</th>
-      <th>注文詳細</th>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th>
     </tr>
   </thead>
 
@@ -16,20 +14,41 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.created_at %></td>
-        <td>
-          <%= order.post_number %><br>
-          <%= order.address %><br>
-          <%= order.name %>
-        </td>
-        <td>
-          <% order.items.each do |item| %>
-            <%= item.name %>
+        <td><%= order.name %></td>
+        <td> <% order.order_details.each do |order_detail| %>
+            <%= order_detail.quantity %>
           <% end %>
         </td>
-        <td><%= order.billing_amount %></td>
-        <td><%= order.status %></td>
-        <td><%= link_to "表示する", public_order_path(order.id) %></td>
+        <td><%= order.status_i18n %></td>
       </tr>
     <% end %>
   </tbody>
+
+</table>
+<h1>注文履歴一覧</h1>
+
+<table class="table table-bordered border-dark">
+  <thead>
+    <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.created_at %></td>
+        <td><%= order.name %></td>
+        <td> <% order.order_details.each do |order_detail| %>
+            <%= order_detail.quantity %>
+          <% end %>
+        </td>
+        <td><%= order.status_i18n %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
 </table>

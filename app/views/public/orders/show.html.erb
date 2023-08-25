@@ -2,7 +2,7 @@
 
 <h4>注文情報</h4>
 
-<table>
+<table class="table table-bordered border-dark">
   <tr>
     <td>注文日</td>
     <td><%= @order.created_at %></td>
@@ -29,26 +29,26 @@
 </table>
 
 <h4>請求情報</h4>
-<table>
+<table class="table table-bordered border-dark">
   <tr>
     <td>商品合計</td>
-    <td><%= (@order.billing_amount - @order.postage) %></td>
+    <td><%= (@order.billing_amount - @order.postage).to_s(:delimited) %></td>
   </tr>
 
   <tr>
     <td>配送料</td>
-    <td><%= @order.postage %></td>
+    <td><%= @order.postage.to_s(:delimited) %></td>
   </tr>
 
   <tr>
     <td>ご請求金額</td>
-    <td><%= @order.billing_amount %></td>
+    <td><%= @order.billing_amount.to_s(:delimited) %></td>
   </tr>
 </table>
 
 <h4>注文内容</h4>
 
-<table>
+<table class="table table-bordered border-dark">
   <thead>
     <tr>
       <th>商品</th>
@@ -60,9 +60,9 @@
   <% @order.order_details.each do |order_detail| %>
     <tr>
       <td><%= order_detail.item.name %></td>
-      <td><%= order_detail.price %></td>
+      <td><%= order_detail.price.to_s(:delimited) %></td>
       <td><%= order_detail.quantity %></td>
-      <td><%= order_detail.sub_total %></td>
+      <td><%= order_detail.sub_total.to_s(:delimited) %></td>
     </tr>
   <% end %>
 </table>
