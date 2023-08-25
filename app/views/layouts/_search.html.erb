@@ -1,4 +1,4 @@
 <%= form_with url: public_items_path, local: true, method: :get, class: "d-flex" do |f| %>
   <%= f.text_field :search, placeholder: "Search" %>
-  <%= f.submit, class: "btn text-white form-control" %>
+  <%= f.submit "検索",class: "btn text-white form-control", style: "background-color: #a0522d;" %>
 <% end %>

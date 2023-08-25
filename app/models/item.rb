@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   has_many :order_details, dependent: :destroy
   belongs_to :genre
   has_one_attached :image
-  
+
   def tax_included
     tax = 1.1
     (price * tax).floor
@@ -16,6 +16,11 @@ class Item < ApplicationRecord
       image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
     end
     image.variant(resize_to_fill: [width, height], gravity: :center).processed
+  end
+
+  def self.search(search)
+    return Item.all unless search
+    Item.where(["name LIKE ?", "%#{search}%"])
   end
 
 end
