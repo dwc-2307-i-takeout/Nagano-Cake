@@ -1,6 +1,6 @@
 class Admin::HomesController < ApplicationController
   def top
-     @orders = Order.all
+     @orders = Order.page(params[page])
   end
 
   private
@@ -12,7 +12,4 @@ class Admin::HomesController < ApplicationController
   def address_params
     params.require(:order).permit(:name, :address)
   end
-end
-
-
 end
