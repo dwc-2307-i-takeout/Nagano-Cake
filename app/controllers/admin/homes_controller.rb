@@ -14,4 +14,3 @@ class Admin::HomesController < ApplicationController
     params.require(:order).permit(:name, :address)
   end
 end
-
