@@ -1,11 +1,11 @@
 <header>
-  <nav class="nav navbar-nav navbar-expand-lg navbar-brand bg-light border-bottom">
+  <nav class="nav navbar-nav navbar-expand-lg bg-white border-bottom">
     <div class="container-fluid">
       <!--顧客がログインしているとき-->
         <div class="collapse navbar-collapse">
-        <%= link_to image_tag("nagaNO.png", width: 100, height: 100), "/" %>
+        <%= link_to image_tag("nagaNO.png", width: 80, height: 80), "/" %>
         <% if customer_signed_in? %>
-        <span class="ml-5">ようこそ、<%= current_customer.family_name %>さん！</span>
+        <span class="ml-5">ようこそ、<strong><%= current_customer.family_name %> <%= current_customer.first_name %></strong> さん！</span>
           <ul class="nav navbar-nav ml-auto">
             <li class="mr-5">
               <%= link_to public_customers_mypage_path, class: "nav-link btn btn-outline-primary" do %>
