@@ -1,13 +1,11 @@
 class Admin::ItemsController < ApplicationController
   def index
-   admin_items_new
     if params[:search]
       @search_item = Item.search(params[:search])
       @items = @search_item.page(params[:page])
     else
       @items = Item.page(params[:page])
     end
-   develop
   end
 
   def new
@@ -30,6 +28,16 @@ class Admin::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+  end
+  
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      flash[:notice] = "商品情報を変更しました"
+      redirect_to admin_item_path
+    else
+      render :edit
+    end
   end
 
   private
