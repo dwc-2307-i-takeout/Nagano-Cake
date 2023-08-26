@@ -11,14 +11,14 @@
             <div class="d-flex flex-column mr-4">
               <%= link_to public_item_path(item.id) do %>
                 <%= image_tag item.item_image(150, 150) %>
-                <!--<div>
-                  アプリケーション完成後にコメントアウトを外す
-                  < if f.is_sale == false >
-                    <div class="text-center">売切れ</div>
-                  < end >
-                </div>-->
-                <p><%= item.name.truncate(14) %></p>
-                <p>￥<%= item.price.to_s(:delimited) %></p>
+                <div>
+                  <% if item.is_sale == false %>
+                    <p>売切れ</p>
+                  <% else %>
+                    <p><%= item.name.truncate(14) %></p>
+                    <p>￥<%= item.price.to_s(:delimited) %></p>
+                  <% end %>
+                </div>
               <% end %>
             </div>
           <% end %>
