@@ -25,13 +25,13 @@
   <%= f.radio_button :address_number, 3 %>
   <%= f.label :address_number_3, "新しいお届け先" %><br>
   <%= f.label :post_number, "郵便番号（ハイフンなし）" %>
-  <%= f.text_field :post_number %><br>
+  <%= f.text_field :post_number, placeholder: "0000000" %><br>
 
-  <%= f.label :address, "住所" %>
-  <%= f.text_field :address %><br>
+  <%= f.label :address, "住所　　　　　　　　　　" %>
+  <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", style: "width: 40%;" %><br>
 
-  <%= f.label :address_name, "宛名" %>
-  <%= f.text_field :address_name %><br>
+  <%= f.label :address_name, "宛名　　　　　　　　　　" %>
+  <%= f.text_field :address_name, placeholder: "令和　道子" %><br>
   <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
   </div>
 <% end %>
