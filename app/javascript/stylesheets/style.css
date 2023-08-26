@@ -11,7 +11,10 @@ body {
   color: #592e15;
 }
 
-/* ページネーション */
+.table {
+  color: #592e15;
+}
+
 .pagination>li {
   vertical-align: baseline;
   margin: 0 6px;
@@ -35,4 +38,17 @@ body {
   border-radius: 50%;
   background-color: rgba(147,201,255,0.7);
   border: red;
+}
+
+.page-link {
+  background-color: #f5f2eb;
+}
+
+
+a {
+  color: #592e15;
+}
+
+a:hover {
+  color:  #592e15;
 }
