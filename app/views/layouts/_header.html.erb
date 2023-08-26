@@ -23,7 +23,7 @@
               <% end %>
             </li>
             <li class="mr-5">
-              <%= link_to destroy_customer_session_path(current_customer.id), method: :delete, class: "nav-link btn btn-outline-danger" do %>
+              <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link btn btn-outline-danger" do %>
                 ログアウト
               <% end %>
             </li>
@@ -55,7 +55,7 @@
               <% end %>
             </li>
             <li class="mr-5">
-              <%= link_to destroy_admin_session_path(current_admin.id), method: :delete, class: "nav-link btn btn-outline-danger" do %>
+              <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link btn btn-outline-danger" do %>
                 ログアウト
               <% end %>
             </li>
