@@ -31,17 +31,17 @@
                     <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id), method: :patch do |f| %>
                         <tbody>
                             <tr>
-                                <td class="border border-dark align-middle">
+                                <td class="border border-dark align-middle bg-white">
                                    <%= image_tag cart_item.item.item_image(100, 100) %>
                                    <%= cart_item.item.name %>
                                 </td>
-                                <td class="border border-dark align-middle"><%= (cart_item.item.tax_included).to_s(:delimited) %></td>
-                                <td class="border border-dark align-middle text-center">
+                                <td class="border border-dark align-middle bg-white"><%= (cart_item.item.tax_included).to_s(:delimited) %></td>
+                                <td class="border border-dark align-middle text-center bg-white">
                                     <%= f.select :quantity, *[1..99], selected: cart_item.quantity %>
                                     <%= f.submit "変更", class: "btn btn-success" %>
                                 </td>
-                                <td class="border border-dark align-middle"><%= (cart_item.total_price).to_s(:delimited) %></td>
-                                <td class="border border-dark align-middle">
+                                <td class="border border-dark align-middle bg-white"><%= (cart_item.total_price).to_s(:delimited) %></td>
+                                <td class="border border-dark align-middle bg-white">
                                     <%= link_to "削除する",
                                                 public_cart_item_path(cart_item.id),
                                                 method: :delete,
@@ -57,7 +57,7 @@
                             <tr>
                                 <td class="align-middle" colspan="3"><%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %></td>
                                 <td class="align-middle border border-dark table-active"><strong>合計金額</strong></td>
-                                <td class="align-middle border border-dark"><strong><%= @all_price.to_s(:delimited) %></strong></td>
+                                <td class="align-middle border border-dark bg-white"><strong><%= @all_price.to_s(:delimited) %></strong></td>
                             </tr>
                         </tbody>
             </table>
