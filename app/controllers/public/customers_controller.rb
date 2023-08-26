@@ -17,7 +17,13 @@ class Public::CustomersController < ApplicationController
   end
 
   def confirm
+    @customer = Customer.find(current_customer.id)
+    @customer.update(is_withdrawal: true)
+    reset_session
+      flash[:notice] = "退会しました。"
+    redirect_to root_path
   end
+
    private
 
   def customer_params
