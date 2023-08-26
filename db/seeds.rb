@@ -18,7 +18,7 @@
     address: "北海道札幌市#{n + 1}",
     phone_number: "0000000000#{n + 1}",
     email: "test#{n + 1}@gmail.com",
-    password: "test000#{0 + 1}",
+    password: "test0000",
   )
 end
 
@@ -47,7 +47,7 @@ end
   )
 
 #商品のダミーデータ
-9.times do |n|
+30.times do |n|
   Item.create!(
     genre_id: (n % 4) + 1,
     name: "世界で#{n + 1}番目に美味しいケーキ！",
