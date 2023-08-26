@@ -1,11 +1,12 @@
 class Admin::OrdersController < ApplicationController
   def show
   end
-  
+
   def index
-    @orders = Order.all
+    @customer = Customer.find(params[:id])
+    @orders = @customer.orders.page(params[:page])
   end
-  
+
   private
 
   def order_params

@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   :registrations => 'admin/registrations',
   }
   namespace :admin do
-    get "/top" => "homes#top", as: :top
-    resources :orders, only: [:show, :index]
+    get 'top', to: 'homes#top', as: :top
+    get 'customers/:id/orders', to: 'orders#index', as: :customer_orders
+    resources :orders, only: [:show]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
