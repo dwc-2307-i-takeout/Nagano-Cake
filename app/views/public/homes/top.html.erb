@@ -23,7 +23,7 @@
                 <%= image_tag item.item_image(150, 150) %>
               <% end %><br>
               <p><%= item.name.truncate(14) %></p>
-              <p>￥<%= item.price.to_s(:delimited) %></p>
+              <p>￥<%= item.tax_included.to_s(:delimited) %></p>
             </div>
           <% end %>
         </div>
