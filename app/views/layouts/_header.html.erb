@@ -28,6 +28,7 @@
               <% end %>
             </li>
           </ul>
+          <div><%= render "layouts/search" %></div>
         </div>
         <!--管理者がログインしているとき-->
         <% elsif admin_signed_in? %>
@@ -44,7 +45,7 @@
               <% end %>
             </li>
             <li class="mr-5">
-              <%= link_to admin_admin_path, class: "nav-link btn btn-outline-success" do %>
+              <%= link_to admin_top_path, class: "nav-link btn btn-outline-success" do %>
                 注文履歴一覧
               <% end %>
             </li>
@@ -59,6 +60,7 @@
               <% end %>
             </li>
           </ul>
+          <div><%= render "layouts/search" %></div>
         </div>
         <!--どちらもログインしていないとき-->
         <% else %>
@@ -85,6 +87,7 @@
               <% end %>
             </li>
           </ul>
+          <div><%= render "layouts/search" %></div>
         </div>
         <% end %>
     </div>

@@ -1,4 +1,4 @@
-<div class='container'>
+<div class='container my-3'>
   <div class='row'>
     <div class="col-3"></div>
     <div class="col-3">
@@ -67,6 +67,17 @@
       <div class="row">
       <div style="margin-left: 400px;">
         <%= link_to "こちら", new_customer_registration_path %>　から新規登録してください
+      </div>
+  </div><!-- row -->
+
+  <div class="row">
+      <p style="margin-top: 50px; margin-left: 300px; background-color: rgba(128, 128, 128, 0.2);">
+        <%= "管理者の方はこちらから" %>
+      </p>
+      </div><!-- row -->
+      <div class="row">
+      <div style="margin-left: 400px;">
+        <%= link_to "こちら", admin_session_path %>　からログインしてください
       </div>
   </div><!-- row -->
 </div><!-- container -->

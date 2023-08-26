@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  background-color: #f5f2eb;
+  color: #592e15;
+}
