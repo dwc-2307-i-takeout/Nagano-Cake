@@ -7,7 +7,7 @@
 
   <div class="row">
     <div class="col-7">
-      <table>
+      <table class="table table-bordered border">
         <thead>
           <tr>
             <th>商品名</th>
@@ -19,7 +19,9 @@
         <tbody>
           <% @cart_items.each do |cart| %>
             <tr>
-              <td><%= cart.item.name %></td>
+              <td><%= image_tag cart.item.item_image(50, 50) %>
+                  <%= cart.item.name %>
+              </td>
               <td><%= (cart.item.tax_included).to_s(:delimited) %></td>
               <td><%= cart.quantity %></td>
               <td><%= (cart.item.price*cart.quantity).to_s(:delimited) %></td>
@@ -29,7 +31,7 @@
       </table>
     </div>
     <div class="col-3">
-      <table>
+      <table class="table table-bordered border">
         <tr>
           <td>送料</td>
           <td><%= @order.postage %></td>
@@ -48,9 +50,8 @@
 
   <div class="row">
     <div class="col">
-      <%= @total.to_s(:delimited) %>
-      <p>お届け先</p>
-      <%= @order.address %>
+      <p>支払い方法</p>
+      <%= @order.status_i18n %>
 
       <%= form_with model: @order, url: public_orders_path, local: true do |f| %>
         <%= f.hidden_field :name %>

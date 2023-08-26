@@ -1,8 +1,8 @@
 class Admin::CustomersController < ApplicationController
   def index
-   admin_items_new
+
     @customers = Customer.page(params[:page])
-   develop
+
   end
 
   def show
