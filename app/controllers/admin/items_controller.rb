@@ -1,11 +1,13 @@
 class Admin::ItemsController < ApplicationController
   def index
+   admin_items_new
     if params[:search]
       @search_item = Item.search(params[:search])
       @items = @search_item.page(params[:page])
     else
       @items = Item.page(params[:page])
     end
+   develop
   end
 
   def new
