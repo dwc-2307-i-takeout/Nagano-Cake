@@ -1,6 +1,7 @@
 <div class="container mt-5">
-  <h2 class="mb-4">会員登録情報</h2>
-
+  <strong>
+    <h2 class="mb-4"><%= @customer.family_name %><%= @customer.first_name %>さんの会員情報編集</h2>
+  </strong>
   <%= form_with model: @customer, url: admin_customer_path, method: :patch, local: true do |f| %>
     <div class="row">
       <tr>
@@ -56,6 +57,20 @@
       <label class="col-lg-3">メールアドレス</label>
       <div class="col-lg-3">
         <%= f.text_field :email %>
+      </div>
+    </div><br>
+
+    <div class="row">
+     <label class="col-lg-3">会員ステータス</label>
+      <div class="col-lg-3">
+
+        <div class="radio-group">
+         <%= f.collection_radio_buttons :is_withdrawal, [[false, "有効"], [true, "退会"]], :first, :last do |b| %>
+        <label class="radio-label">
+          <%= b.radio_button %> <%= b.label %>
+        </label>
+         <% end %>
+        </div>
       </div>
     </div><br>
 
