@@ -24,7 +24,7 @@
 
          <label class="ml-5"><%= f.radio_button(:address_number, 2) %>
         <span><strong>登録済み住所から選択</strong></span>
-        <div class="ml-5 pt-2"><%= f.collection_select :registered, current_customer.addresses.all, :id, :address %>
+        <div class="ml-5 pt-2"><%= f.collection_select :registered, current_customer.addresses.all, :id, :address_display %>
         </div></label><br>
 
       <div class="ml-5">
