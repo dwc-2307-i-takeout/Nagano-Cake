@@ -3,11 +3,11 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = @order.order_details
   end
-  
+
   def index
     @orders = Order.all
   end
-  
+
    def update
       @order = Order.find(params[:id])
      if @order.update(order_params)
@@ -27,20 +27,20 @@ class Admin::OrdersController < ApplicationController
     @order.post_number = params[:order][:post_number]
     @order.postage = params[:order][:postage]
     @order.billing_amount = params[:order][:billing_amount]
-    
+
     # ビュー内でフォームに表示するためのインスタンス変数を設定
     @cart_items = @order.cart_items
     @all_price = @order.calculate_all_price
 
     render :confirm
   end
-  
+
   private
 
   def order_params
     params.require(:order).permit(:name, :address, :billing_amount, :post_number, :postage, :status)
   end
 
-  
+
 end
 
