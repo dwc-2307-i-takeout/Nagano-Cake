@@ -12,10 +12,16 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
     if @order.update(order_params)
-      if @order.status == "payment_confirmation"
+      if @order.status == "waiting_for_payment"
         @order.order_details.each do |order_detail|
-          order_detail.update(making_status: "waiting_for_production")
+          order_detail.update(making_status: "not_start")
       end
+
+      elsif @order.status == "payment_confirmation"
+       @order.order_details.each do |order_detail|
+        order_detail.update(making_status: "waiting_for_production")
+       end
+
       elsif @order.status == "production"
        @order.order_details.each do |order_detail|
         order_detail.update(making_status: "production")
