@@ -1,9 +1,15 @@
-<div class="container mt-5">
-  <h2 class="mb-4">会員登録情報</h2>
+<div class="container my-5">
+  <div class="row">
+    <h4 class="col-4 ml-5 pb-3">
+      <span class="px-3" style="background-color:#d3d3d3;">
+        会員登録情報
+      </span>
+    </h4>
+  </div><!-- row -->
 
   <%= form_with model: @customer, url: public_customers_mypage_path, method: :patch, local: true do |f| %>
     <div class="row">
-      <label class="col-lg-3">名前</label>
+      <label class="col-lg-3">氏名</label>
       <div class="col-lg-3">
         <%= f.text_field :family_name, autoforcus: true %>
       </div>
@@ -51,18 +57,11 @@
     </div><br>
 
     <div class="row">
-      <div class="col-lg-12">
-        <div class="row">
-          <div class="col-lg-3"></div>
-          <div class="col-lg-9">
-            <%= f.submit "変更を保存", class: "btn btn-success" %>
-          </div>
-        </div>
-      </div>
+      <div class="col-3"></div>
+      <%= f.submit "編集内容を保存", class: "btn btn-success mr-md-5 ml-3" %>
+      <div class="col-1"></div>
+      <%= link_to "退会する", public_customers_confirm_path, class: "btn btn-danger px-3" %>
     </div>
   <% end %>
 
-  <div>
-    <%= link_to "退会する", public_customers_confirm_path, class: "btn btn-danger" %>
-  </div>
 </div>

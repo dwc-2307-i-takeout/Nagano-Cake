@@ -15,7 +15,7 @@ class Public::ItemsController < ApplicationController
     elsif params[:search]
       @search_item = Item.search(params[:search])
       @items = @search_item.page(params[:page]).per(8)
-      @items_count = @items.count
+      @items_count = @search_item.count
     else
       @items = Item.page(params[:page]).per(8)
       @items_count = Item.count

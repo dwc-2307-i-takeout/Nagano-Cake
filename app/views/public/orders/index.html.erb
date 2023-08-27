@@ -1,35 +1,41 @@
-<div class="container">
-<h1>注文履歴一覧</h1>
+<div class="container my-5">
+  <div class="row">
+    <h4 class="col-4 ml-5 pb-3">
+      <span class="px-3" style="background-color:#d3d3d3;">
+        注文履歴一覧
+      </span>
+    </h4>
+  </div><!-- row -->
 
 <table class="table table-bordered border">
   <thead>
     <tr>
-      <th>注文日</th>
-      <th>配送先</th>
-      <th>注文商品</th>
-      <th>支払い金額</th>
-      <th>ステータス</th>
-      <th>注文詳細</th>
+      <th class="border border-dark table-active">注文日</th>
+      <th class="border border-dark table-active">配送先</th>
+      <th class="border border-dark table-active">注文商品</th>
+      <th class="border border-dark table-active">支払い金額</th>
+      <th class="border border-dark table-active">ステータス</th>
+      <th class="border border-dark table-active">注文詳細</th>
     </tr>
   </thead>
 
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.created_at %></td>
-        <td>
-          <%= order.post_number %><br>
+        <td class="border border-dark align-middle bg-white"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+        <td class="border border-dark align-middle bg-white">
+          <%= "〒 " + order.post_number %><br>
           <%= order.address %><br>
           <%= order.name %>
         </td>
-        <td>
+        <td class="border border-dark align-middle bg-white">
           <% order.order_details.each do |order_detail| %>
             <%= order_detail.item.name %>
           <% end %>
         </td>
-        <td><%= order.billing_amount %></td>
-        <td><%= order.status_i18n %></td>
-        <td><%= link_to "表示する", public_order_path(order.id), class: "btn btn-primary" %></td>
+        <td class="border border-dark align-middle bg-white"><%= order.billing_amount.to_s(:delimited) + "円" %></td>
+        <td class="border border-dark align-middle bg-white"><%= order.status_i18n %></td>
+        <td class="border border-dark align-middle bg-white"><%= link_to "表示する", public_order_path(order.id), class: "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>
