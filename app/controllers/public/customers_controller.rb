@@ -18,6 +18,10 @@ class Public::CustomersController < ApplicationController
 
   def confirm
     @customer = Customer.find(current_customer.id)
+  end
+
+  def withdrawal
+    @customer = Customer.find(current_customer.id)
     @customer.update(is_withdrawal: true)
     reset_session
       flash[:notice] = "退会しました。"
