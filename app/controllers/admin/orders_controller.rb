@@ -8,14 +8,30 @@ class Admin::OrdersController < ApplicationController
     @orders = Order.all
   end
 
-   def update
-      @order = Order.find(params[:id])
-     if @order.update(order_params)
-      redirect_to  admin_order_path(@order)
-     else
+  def update
+    @order = Order.find(params[:id])
+
+    if @order.update(order_params)
+      if @order.status == "payment_confirmation"
+        @order.order_details.each do |order_detail|
+          order_detail.update(making_status: "waiting_for_production")
+      end
+      elsif @order.status == "production"
+       @order.order_details.each do |order_detail|
+        order_detail.update(making_status: "production")
+       end
+
+      elsif @order.status == "preparing_to_ship"
+       @order.order_details.each do |order_detail|
+        order_detail.update(making_status: "complete_production")
+       end
+      end
+
+      redirect_to admin_order_path(@order)
+    else
       render :show
-     end
-   end
+    end
+  end
 
   def confirm
     @order = Order.find(params[:id])
