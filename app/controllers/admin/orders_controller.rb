@@ -8,14 +8,13 @@ class Admin::OrdersController < ApplicationController
     @orders = Order.all
   end
 
-   def update
-      @order = Order.find(params[:id])
-     if @order.update(order_params)
-      redirect_to  admin_order_path(@order)
-     else
-      render :show
-     end
-   end
+  def update
+    @order = Order.find(params[:id])
+    if @order.update(order_params)
+      @order.order_details.update_all(making_status: 1) if @order.status == "payment_confirmation"
+    end
+    redirect_to request.referer
+  end
 
   def confirm
     @order = Order.find(params[:id])
