@@ -8,7 +8,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = current_customer.orders.find(params[:id])
+   @order = current_customer.orders.find(params[:id])
   end
 
   def create
@@ -72,7 +72,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:name, :address, :billing_amount, :post_number, :postage)
+    params.require(:order).permit(:name, :address, :billing_amount, :post_number, :postage, :payment_method)
   end
 
   def address_params

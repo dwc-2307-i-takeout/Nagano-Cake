@@ -2,8 +2,12 @@ class Address < ApplicationRecord
 
   belongs_to :customer
 
-def address_display
-  '〒' + post_number + ' ' + address + ' ' + name
-end
+  def address_display
+  display = '〒'
+  display += post_number if post_number
+  display += ' ' + address if address
+  display += ' ' + name if name
+  display
+  end
 
 end
