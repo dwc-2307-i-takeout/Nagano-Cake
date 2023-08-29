@@ -1,2 +1,26 @@
-<h1>Admin::Sessions#new</h1>
-<p>Find me in app/views/admin/sessions/new.html.erb</p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-4 mxl-5 pb-3">
+      <h4><span class="px-3" style="background-color:#d3d3d3">管理者ログイン</span></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col mx-auto">
+      <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
+        <div class="field">
+          <%= f.label :email %><br>
+          <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %><br>
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <%= f.submit "ログイン", class: "btn btn-primary btn-sm" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
