@@ -1,6 +1,6 @@
 ## ながのCAKE
 
-<p align="center"><img src="https://github.com/dwc-2307-i-takeout/Nagano-Cake/develop/app/assets/images/welcome_nagano_cake.JPG" width="130" height="130" /></p>
+![welcome_nagano_cake](https://github.com/dwc-2307-i-takeout/Nagano-Cake/assets/138280990/81bacad8-3dc9-4fd4-9219-e9c5dd8e813b)
 
 ## 案件概要
 
